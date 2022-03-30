@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>Welcome To Spring Boot Web Application</title>
+</head>
+<body>
+	<form th:action="@{/register}" th:object="${user}" method="post">
+	    	<div>
+	        	<label>Username:</label>
+	        	<input type="text" th:field="*{username}" placeholder="enter username" />
+	    	</div>
+	    	<div>
+	       		<label>Role:</label>
+	        	<input type="text" th:field="*{role}" placeholder="USER or ADMIN" />
+	    	</div>
+	     	<div>
+	        	<label>Password:</label>
+	        	<input type="text" th:field="*{password}" placeholder="enter password" />
+	    	</div>
+	    	<input type="submit" value="Register"/>
+	</form>
+	<a href="/login">Login to Account Here!</a>
+</body>
+</html>

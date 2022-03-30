@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" 
+xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+	<meta charset="UTF-8" />
+	<title>Dashboard Page</title>
+</head>
+<body>
+
+	 <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+	 
+	<div sec:authorize="hasAuthority('ADMIN')">
+    	This content is only shown to administrators.
+    	<a href="/hello">GO TO HELLO</a><br>
+	</div>
+
+	<div sec:authorize="hasAuthority('USER')">
+    	This content is only shown to users.
+    	<a href="/hallo">GO TO HALLO</a>
+	</div>
+	
+	<div>
+		User: <span sec:authentication="name">NOT FOUND</span>
+		Spring Roles: <span sec:authentication="principal.authorities">NOT FOUND</span>
+	</div>
+</body>
+</html>

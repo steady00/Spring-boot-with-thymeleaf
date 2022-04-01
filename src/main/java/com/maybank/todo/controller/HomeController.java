@@ -21,13 +21,13 @@ public class HomeController {
 	@GetMapping("/")
 	public String home(Model model) {
 		model.addAttribute("user", new User());
-		return "home";
+		return "index";
 	}
 	
 	@PostMapping("/register")
 	public String register(@ModelAttribute User user) {
 		repo.saveUser(user);
-		return "redirect:hello";
+		return "redirect:login";
 	}
 	
 	@GetMapping("/login")
@@ -39,23 +39,6 @@ public class HomeController {
 	@PostMapping("/login")
 	public String masuk() {
 		return "login";
-	}
-	
-	@GetMapping("/dashboard")
-	public String dashboard(){
-		return "dashboard";
-		
-	}
-	
-	
-	@GetMapping("/hello")
-	public String hello() {
-		return "hello";
-	}
-	
-	@GetMapping("/hallo")
-	public String hallo() {
-		return "hallo";
 	}
 	
 }

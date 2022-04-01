@@ -1,6 +1,7 @@
 package com.maybank.todo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,7 +25,6 @@ public class TodoController {
 	
 	@GetMapping("/list-all")
 	public String listAll(Model model) {
-		System.out.println("DATA" + todoService.listAll());
 		model.addAttribute("todos", todoService.listAll()); // menampilkan data dari database
 		return "todo/listAll";
 	}
@@ -52,6 +52,7 @@ public class TodoController {
 	
 	@PostMapping("update")
 	public String update(@ModelAttribute Todo todo) {
+		System.out.println("UPDATE" + todo);
 		todoService.updateTodo(todo);
 		return "redirect:list-all";
 	}
